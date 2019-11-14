@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.OrderSettingMapper">
+
+    <!--void updateOrderSettiing(OrderSetting orderSetting);-->
+    <update id="updateOrderSettiing" parameterType="com.itheima.pojo.OrderSetting">
+        update t_ordersetting set number = #{number} where orderDate = #{orderDate}
+    </update>
+
+    <!--void insertOrderSettiing(OrderSetting orderSetting)-->
+    <insert id="insertOrderSettiing" parameterType="com.itheima.pojo.OrderSetting">
+        insert into t_ordersetting values (null, #{orderDate}, #{number}, #{reservations});
+    </insert>
+
+    <!--List<OrderSetting> getOrderSettingDate(@Param("begin") String begin, @Param("end") String end)-->
+    <select id="getOrderSettingDate" parameterType="String" resultType="com.itheima.pojo.OrderSetting">
+        SELECT * FROM `t_ordersetting` WHERE orderDate BETWEEN #{begin} AND #{end}
+    </select>
+
+</mapper>
